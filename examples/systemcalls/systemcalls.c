@@ -36,7 +36,7 @@ bool do_system(const char *cmd) {
 *   by the command issued in @param arguments with the specified arguments.
 */
 
-bool _do_exec_v(const char *outputfile, int count, va_list args) {
+bool _do_exec(const char *outputfile, int count, va_list args) {
     char **command = (char **)malloc((count + 1) * sizeof(char *));
     if (!command) {
         perror("malloc() failed");
