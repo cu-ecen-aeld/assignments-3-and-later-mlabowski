@@ -107,7 +107,7 @@ bool do_exec(int count, ...) {
     *   as second argument to the execv() command.
     *
 */
-    bool result = _do_exec_v(NULL, count, args);
+    bool result = _do_exec(NULL, count, args);
     va_end(args);
     return result;
 }
@@ -128,7 +128,7 @@ bool do_exec_redirect(const char *outputfile, int count, ...) {
     *   The rest of the behaviour is same as do_exec()
     *
     */
-    bool result = _do_exec_v(outputfile, count, args);
+    bool result = _do_exec(outputfile, count, args);
     va_end(args);
     return result;
 }
