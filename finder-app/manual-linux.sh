@@ -31,6 +31,8 @@ if [ ! -d "${OUTDIR}/linux-stable" ]; then
 fi
 if [ ! -e ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ]; then
     cd linux-stable
+    echo "${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image not found"
+    echo "PWD: " $(pwd)
     echo "Checking out version ${KERNEL_VERSION}"
     git checkout ${KERNEL_VERSION}
 
@@ -124,4 +126,5 @@ gzip -f initramfs.cpio
 
 echo "Adding the Image in outdir"
 cp ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ${OUTDIR}/../aesd-autograder/
-cp ${OUTDIR}/initramfs.cpio.gz ${OUTDIR}/../aesd-autograder/
+mkdir -p "${OUTDIR}/../aesd-autograder/linux-stable/arch/${ARCH}/boot/"
+cp ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ${OUTDIR}/../aesd-autograder/
